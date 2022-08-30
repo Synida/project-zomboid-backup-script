@@ -54,17 +54,17 @@
     start "" /D "%gamePath%\" %exeName%
 
     :: Initial delay
-    timeout /t 30 /nobreak > nul
+    timeout /t 60 /nobreak > nul
 
     :::::::::::::::::::::::::::::::::::
     :: Starting backup functionality ::
     :::::::::::::::::::::::::::::::::::
 
     :: Create backup folder if doesn't exist
-    if not exist %backupFolder% mkdir %backupFolder%
-    if not exist %backupFolder%\%saveFolder% mkdir %backupFolder%\%saveFolder%
+    if not exist "%backupFolder%" mkdir "%backupFolder%"
+    if not exist "%backupFolder%\%saveFolder%" mkdir "%backupFolder%\%saveFolder%"
 
-    cd %backupFolder%\%saveFolder%
+    cd "%backupFolder%\%saveFolder%"
     set saveLocation=%savePath%\%saveFolder%
 
     :: Infinite loop running to back up the world stages in every %backupFrequency% seconds
@@ -72,15 +72,15 @@
         :: Wait until the next scheduled backup
         timeout /t %backupFrequency% /nobreak > nul
 
-        set subDate=%date:/=%
-        set subTime=%time::=%
+        set subDate=%date:/=_%
+        set subTime=%time::=_%
         set timestamp=%subDate: =_%_%subTime:.=_%
         echo %timestamp%
 
         echo Saving the world.
         set backupLocation=%backupFolder%\%saveFolder%\%timestamp%
 
-        robocopy %saveLocation% %backupLocation% /E
+        robocopy "%saveLocation%" "%backupLocation%" /E
 
         :: Delete all old saves except last %keepBackups% - based on file name, so don't change them
         for /f "skip=%keepBackups% eol=: delims=" %%F in ('dir /b /o-n /AD') do @rmdir /q /s "%%F"
