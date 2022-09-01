@@ -9,14 +9,14 @@
     :: Project Zomboid executable - use 32/64 version according to your OS
     set exeName=ProjectZomboid64.exe
 
-    :: Project Zomboid save file path - you need to define Sandbox or Survival at the end, set <username> according to your environment - dont leave backslash(\) at the end
-    set savePath=C:\Users\Synida\Zomboid\Saves\Sandbox
+    :: Project Zomboid save file path - you need to define Sandbox or Survival at the end, set <username> according to your environment - dont leave backslash(\) at the end - replace <osUserFolderName> with your OS user account foldername
+    set savePath=C:\Users\<osUserFolderName>\Zomboid\Saves\Sandbox
 
-    :: World name that you would like to back up while playing Project Zomboid
-    set saveFolder=15-08-2022_11-58-14
+    :: World name that you would like to back up while playing Project Zomboid - replace <saveFolderName> parameter with your save folder name inside the save path folder e.g. 15-08-2022_11-58-14
+    set saveFolder=<saveFolderName>
 
-    :: Backup folder location where the backups will be saved - dont leave backslash(\) at the end
-    set backupFolder=C:\Users\Synida\Zomboid\Saves\Backup
+    :: Backup folder location where the backups will be saved - dont leave backslash(\) at the end - replace <osUserFolderName> with your OS user account foldername
+    set backupFolder=C:\Users\<osUserFolderName>\Zomboid\Saves\Backup
 
     :: Backup frequency in seconds - if u love your ssd, don't set it to something too small
     set backupFrequency=300
